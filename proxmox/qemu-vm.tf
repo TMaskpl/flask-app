@@ -12,8 +12,11 @@ variable "vm_configs" {
     vm_state = string
   }))
   default = {
-    "master" = { node = "pve-tst", template = "ubuntu-2404-cloudinit-templatev2", vm_id = 201, name = "master", cores = 2, memory = 4096, size = "40G", storage = "ZFS", network = "vmbr0", vm_state = "running" }
-    "worker" = { node = "pve-tst", template = "ubuntu-2404-cloudinit-templatev2", vm_id = 202, name = "worker", cores = 2, memory = 4096, size = "40G", storage = "ZFS", network = "vmbr0", vm_state = "running" }
+    "master1" = { node = "pve-tst", template = "ubuntu-2404-cloudinit-templatev2", vm_id = 201, name = "master1", cores = 2, memory = 4096, size = "40G", storage = "ZFS", network = "vmbr0", vm_state = "running" }
+    "master2" = { node = "pve-tst", template = "ubuntu-2404-cloudinit-templatev2", vm_id = 202, name = "master2", cores = 2, memory = 4096, size = "40G", storage = "ZFS", network = "vmbr0", vm_state = "running" }
+    "master3" = { node = "pve-tst", template = "ubuntu-2404-cloudinit-templatev2", vm_id = 203, name = "master3", cores = 2, memory = 4096, size = "40G", storage = "ZFS", network = "vmbr0", vm_state = "running" }
+
+    # "worker" = { node = "pve-tst", template = "ubuntu-2404-cloudinit-templatev2", vm_id = 202, name = "worker", cores = 2, memory = 4096, size = "40G", storage = "ZFS", network = "vmbr0", vm_state = "running" }
 
     # "prod-1" = { node = "pve-tst", template = "debian12-templatev2", vm_id = 201, name = "Prod-1", cores = 2, memory = 4096, size = "50G", storage = "ZFS", network = "vmbr0", vm_state = "running" }
     # "prod-2" = { node = "pve-tst", template = "debian12-templatev2", vm_id = 202, name = "Prod-2", cores = 2, memory = 4096, size = "50G", storage = "ZFS", network = "vmbr0", vm_state = "stopped" }
