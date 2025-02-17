@@ -1,0 +1,25 @@
+---
+- name: Install k9s on Ubuntu 24.04
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure .kube directory exists
+      file:
+        path: /root/.kube
+        state: directory
+        mode: '0755'
+
+    - name: Copy k3s kubeconfig to /root/.kube/config
+      copy:
+        src: /etc/rancher/k3s/k3s.yaml
+        dest: /root/.kube/config
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0600'
+
+    - name: Replace localhost with server IP
+      replace:
+        path: /root/.kube/config
+        regexp: '127.0.0.1'
+        replace: '{{ ansible_host }}'

@@ -1,0 +1,10 @@
+---
+- name: Resize disk
+  hosts: all
+  become: yes
+  tasks:
+    - name: 'Extend the FS'
+      filesystem:
+        fstype: 'ext4'
+        dev: '/dev/sda1'
+        resizefs: yes
