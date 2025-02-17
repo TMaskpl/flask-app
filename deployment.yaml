@@ -19,7 +19,7 @@ spec:
         - containerPort: 5000
         env:
         - name: SQLALCHEMY_DATABASE_URI
-          value: postgresql://postgres:password@db/postgres
+          value: postgresql://postgres:password@postgres/postgres
 ---
 apiVersion: v1
 kind: Service
@@ -81,16 +81,3 @@ spec:
   - port: 5432
   selector:
     app: postgres
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  namespace: metallb-system
-  name: config
-data:
-  config: |
-    address-pools:
-    - name: default
-      protocol: layer2
-      addresses:
-      - 10.222.20.20-10.222.20.30
