@@ -7,6 +7,7 @@ WORKDIR /app
 # Skopiuj pliki requirements.txt i app.py do katalogu roboczego
 COPY requirements.txt requirements.txt
 COPY app.py app.py
+COPY templates/ templates/
 
 # Zainstaluj zależności
 RUN pip install -r requirements.txt

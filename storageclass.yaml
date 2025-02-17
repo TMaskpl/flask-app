@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: rancher.io/local-path  # Użyj odpowiedniego provisionera dla swojego środowiska
+allowVolumeExpansion: true
+reclaimPolicy: Delete
+volumeBindingMode: Immediate

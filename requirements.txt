@@ -2,3 +2,8 @@ Flask==2.0.1
 Flask-SQLAlchemy==2.5.1
 psycopg2-binary==2.9.1
 Werkzeug==2.0.3
+SQLAlchemy==1.4.23
+
+# docker build -t tmask/flask-app:latest .
+# docker push tmask/flask-app:latest
+# kubectl apply -f deployment.yaml

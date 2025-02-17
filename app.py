@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -13,18 +13,18 @@ class Comment(db.Model):
     def __repr__(self):
         return f'<Comment {self.id} - {self.text}>'
 
-@app.route('/comments', methods=['GET'])
-def get_comments():
+@app.route('/')
+def index():
     comments = Comment.query.all()
-    return jsonify([{'id': c.id, 'text': c.text} for c in comments])
+    return render_template('index.html', comments=comments)
 
-@app.route('/comments', methods=['POST'])
+@app.route('/add_comment', methods=['POST'])
 def add_comment():
-    data = request.get_json()
-    new_comment = Comment(text=data['text'])
+    text = request.form['text']
+    new_comment = Comment(text=text)
     db.session.add(new_comment)
     db.session.commit()
-    return jsonify({'id': new_comment.id, 'text': new_comment.text}), 201
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     db.create_all()
